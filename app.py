@@ -26,16 +26,16 @@ def count_pixels_by_color_set(image, color_set):
     return sum(1 for pixel in pixels.reshape(-1, 3) if tuple(pixel) in color_set)
 
 
-st.title("Color Classifier")
+st.title("Corruption Checker")
 
 uploaded_file = st.file_uploader(
-    "Choose an image...", type=['jpg', 'jpeg', 'png'])
+    "マーケットプレイスの汚染度バーのスクリーンショットをアップしてください。", type=['jpg', 'jpeg', 'png'])
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert('RGB')
-    st.image(image, caption='Uploaded Image.', use_column_width=True)
+    st.image(image, use_column_width=True)
 
-    st.write("Adjust the RGB thresholds for white and orange:")
+    st.write("デフォルト設定でうまくいかなかった場合に調整してみてください。")
     white_r_threshold = st.slider("White R Threshold", 0, 255, 200)
     white_g_threshold = st.slider("White G Threshold", 0, 255, 200)
     white_b_threshold = st.slider("White B Threshold", 0, 255, 200)
@@ -44,7 +44,7 @@ if uploaded_file is not None:
     orange_g_threshold = st.slider("Orange G Threshold", 0, 255, 70)
     orange_b_threshold = st.slider("Orange B Threshold", 0, 255, 70)
 
-    if st.button("Classify & Count"):
+    if st.button("汚染度測定"):
         unique_colors = get_unique_colors(image)
         white_like, orange_like = classify_colors_adjustable_v2(
             unique_colors, white_r_threshold, white_g_threshold, white_b_threshold, orange_r_threshold, orange_g_threshold, orange_b_threshold)
