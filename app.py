@@ -48,8 +48,8 @@ if uploaded_file is not None:
     white_b_threshold = st.slider("White B Threshold", 0, 255, 200)
 
     orange_r_threshold = st.slider("Orange R Threshold", 0, 255, 100)
-    orange_g_threshold = st.slider("Orange G Threshold", 0, 255, 30)
-    orange_b_threshold = st.slider("Orange B Threshold", 0, 255, 30)
+    orange_g_threshold = st.slider("Orange G Threshold", 0, 255, 0)
+    orange_b_threshold = st.slider("Orange B Threshold", 0, 255, 0)
 
     if st.button("汚染度測定"):
         unique_colors = get_unique_colors(image)
