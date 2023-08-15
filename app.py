@@ -1,3 +1,4 @@
+from pydoc import describe
 import streamlit as st
 from PIL import Image
 import numpy as np
@@ -27,6 +28,12 @@ def count_pixels_by_color_set(image, color_set):
 
 
 st.title("Corruption Checker")
+
+# 画像を読み込む
+image = Image.open('mihon.jpg')
+
+# 画像を表示する
+st.image(image, caption='スクリーンショットをするエリア', use_column_width=True)
 
 uploaded_file = st.file_uploader(
     "マーケットプレイスの汚染度バーのスクリーンショットをアップしてください。", type=['jpg', 'jpeg', 'png'])
